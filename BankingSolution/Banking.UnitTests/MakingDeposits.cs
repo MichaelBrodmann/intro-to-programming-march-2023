@@ -1,21 +1,26 @@
 ﻿
 
 using Banking.Domain;
+using Xunit;
 
-namespace Banking.UnitTests
+namespace Banking.UnitTests;
+
+public class MakingDeposits
 {
-    public class MakingDeposits
+    [Theory]
+    [InlineData(100)]
+    [InlineData(1.25)]
+    public void DepositsIncreasesTheBalance(decimal amountToDeposit)
     {
-        [Fact]
-        public void DepositsIncreasesThebalance()
-        {
-            var account = new BankAccount();
-            var openingBalance = account.GetBalance();
-            var amountToDeposit = 100M;
+        // given
+        var account = new BankAccount();
+        var openingBalance = account.GetBalance(); // Query (Func)
 
-            account.Deposit(amountToDeposit);
+        // when
+        account.Deposit(amountToDeposit); // Command (Action)
 
-            Assert.Equal(openingBalance + amountToDeposit, account.GetBalance());
-        }
+        // then
+        Assert.Equal(openingBalance + amountToDeposit,
+            account.GetBalance());
     }
 }
