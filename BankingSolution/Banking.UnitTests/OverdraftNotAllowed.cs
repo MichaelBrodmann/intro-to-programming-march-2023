@@ -38,5 +38,33 @@ public class OverdraftNotAllowed
             account.Withdraw(account.GetBalance() + .01M);
 
         });
+
+
+        //var rightExceptionThrow = ExceptionHelpers.Throws<OverdraftException>(() =>
+        //{
+        //    account.Withdraw(account.GetBalance() + .01M);
+        //});
+
+        //Assert.True(rightExceptionThrow);
+    }
+
+    
+}
+
+public class ExceptionHelpers
+{
+    public static bool Throws<TException>(Action suspectCode)
+        where TException : Exception
+    {
+        var rightExceptionThrown = false;
+        try
+        {
+            suspectCode();
+        }
+        catch (TException)
+        {
+            rightExceptionThrown = true;
+        }
+        return rightExceptionThrown; 
     }
 }
