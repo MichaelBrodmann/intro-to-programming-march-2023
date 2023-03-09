@@ -14,7 +14,7 @@ public class BasicBonusCalculatorTests
     {
         var bonusCalculator = new StandardBonusCalculator();
 
-        decimal bonus = bonusCalculator.CalculateBankAccountDepositFor(balance, amount);
+        decimal bonus = bonusCalculator.CalculateBankAccountDepositBonusFor(balance, amount);
 
         Assert.Equal(expectedBonus, bonus);
     }

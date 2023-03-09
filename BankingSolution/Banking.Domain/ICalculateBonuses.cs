@@ -2,6 +2,6 @@
 {
     public interface ICalculateBonuses
     {
-        decimal CalculateBankAccountDepositFor(decimal accountCurrentBalance, decimal amountOfDeposit);
+        decimal CalculateBankAccountDepositBonusFor(decimal accountCurrentBalance, decimal amountOfDeposit);
     }
 }

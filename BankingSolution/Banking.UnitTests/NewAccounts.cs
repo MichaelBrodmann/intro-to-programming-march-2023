@@ -2,6 +2,7 @@
 
 using Banking.Domain;
 using Banking.UnitTests.TestDoubles;
+using Moq;
 
 namespace Banking.UnitTests
 {
@@ -10,7 +11,7 @@ namespace Banking.UnitTests
         [Fact]
         public void NewAccountHasCorrectOpeningBalance()
         {
-            BankAccount account = new BankAccount(new DummyBonusCalculator());
+            var account = new BankAccount(new Mock<ICalculateBonuses>().Object);
             decimal balance = account.GetBalance();
             Assert.Equal(5000, balance);
         }
