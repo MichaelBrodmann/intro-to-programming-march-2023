@@ -1,5 +1,4 @@
-﻿
-using Moq;
+﻿using Moq;
 using OnCallDeveloperApi.Controllers;
 
 namespace OnCallDeveloperApi.UnitTests;
@@ -42,11 +41,7 @@ public class StandardBusinessClockTests
     public void TestingAControllerSux()
     {
         var controller = new OnCallDeveloperController(new Mock<IProvideTheBusinessClock>().Object);
-
         var response = controller.GetOnCallDeveloper();
-
-        // 30-50 lines of code just to find out if when I call GetOnCallDeveloper I get back the right data.
-
 
     }
 }
