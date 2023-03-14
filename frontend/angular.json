@@ -128,6 +128,15 @@
               "devServerTarget": "frontend:serve:production"
             }
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
+          }
         }
       }
     }
@@ -135,6 +144,7 @@
   "cli": {
     "analytics": "6bafcd54-9503-43d8-acdd-1727e5459f1f",
     "schematicCollections": [
+      "@angular-eslint/schematics",
       "@cypress/schematic",
       "@schematics/angular"
     ]
