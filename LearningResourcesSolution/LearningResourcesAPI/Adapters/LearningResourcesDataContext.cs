@@ -1,6 +1,13 @@
-﻿namespace LearningResourcesAPI.Adapters
+﻿using LearningResourcesAPI.Domain;
+using Microsoft.EntityFrameworkCore;
+
+namespace LearningResourcesAPI.Adapters;
+
+public class LearningResourcesDataContext : DbContext
 {
-    public class LearningResourcesDataContext
+    public LearningResourcesDataContext(DbContextOptions<LearningResourcesDataContext> options): base(options)
     {
+        
     }
+    public DbSet<LearningResourcesEntity> LearningResources { get; set; }
 }
