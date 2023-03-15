@@ -13,7 +13,7 @@ import { CounterModule } from './features/counter/counter.module';
 import { StoreModule } from '@ngrx/store';
 import { reducers } from './state';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-
+import { EffectsModule } from '@ngrx/effects';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +28,8 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     HttpClientModule,
     CounterModule,
     StoreModule.forRoot(reducers),
-    StoreDevtoolsModule.instrument(),
+    StoreDevtoolsModule.instrument(), // this is the HAWTNESS for development.
+    EffectsModule.forRoot([]),
   ],
   providers: [OnCallDataService],
   bootstrap: [AppComponent],
