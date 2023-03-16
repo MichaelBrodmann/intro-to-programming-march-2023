@@ -1,3 +1,4 @@
+using LearningResourcesApi.Domain;
 using LearningResourcesAPI.Adapters;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,19 +15,23 @@ builder.Services.AddCors(config =>
     });
 });
 
+
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// TWO services.
+// builder.Services.AddSingleton<ISystemTime, SystemTime>()
 builder.Services.AddDbContext<LearningResourcesDataContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("resources"));
 });
+
+builder.Services.AddScoped<IManageLearningResources, EntityFrameworkResourceManager>();
 var app = builder.Build();
 
 app.UseCors();
-
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
