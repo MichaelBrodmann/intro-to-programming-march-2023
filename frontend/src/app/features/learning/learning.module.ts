@@ -7,11 +7,12 @@ import { ListComponent } from './components/list/list.component';
 import { OverviewComponent } from './components/overview/overview.component';
 import { NewComponent } from './components/new/new.component';
 import { StoreModule } from '@ngrx/store';
+import { featureName, reducers } from './state';
 import { EffectsModule } from '@ngrx/effects';
 import { HttpClientModule } from '@angular/common/http';
-import { featureName, reducers } from './state';
 import { ItemsEffects } from './state/effects/items.effects';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ErrorDisplayComponent } from './components/error-display/error-display.component';
 
 const routes: Routes = [
   {
@@ -45,10 +46,11 @@ const routes: Routes = [
     ListComponent,
     OverviewComponent,
     NewComponent,
+    ErrorDisplayComponent,
   ],
   imports: [
-    RouterModule.forChild(routes),
     CommonModule,
+    RouterModule.forChild(routes),
     StoreModule.forFeature(featureName, reducers),
     EffectsModule.forFeature([ItemsEffects]),
     HttpClientModule,
